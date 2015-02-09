@@ -104,7 +104,9 @@
       var PX_PER_VW = viewport_w * 0.01;
       var PX_PER_VH = viewport_h * 0.01;
 
-      console.log(PX_PER_VW);
+      console.log('viewport-w: ' + viewport_w);
+      console.log('viewport-h: ' + viewport_h);
+      console.log('w/h (%): ' + viewport_w/viewport_h * 100);
 
       var percent_w = '100%';
       $('#percent > .label').html(formatVal(percent_w,'%'));
@@ -142,19 +144,25 @@
       var ch_w = (BROWSER_WIDTH / PX_PER_CH) + 'ch';
       setVal(ch_w,'ch');
 
-      var vw_val = 100;
-      var vw_w = '100vw';
-      setVal(vw_w,'vw');
+      var vw_val = viewport_w;
+      var vw_w = vw_val + 'px'; // <!-- [WORKAROUND] for cross platform -->
+      $('#vw').css({'width':vw_w, 'height':H});
+      var vw_html = '100';
+      $('#vw > .label').html(vw_html + ' <b>vw</b>');
 
-      var vh_val = (PX_PER_VW / PX_PER_VH) * 100;
-      var vh_w = vh_val + 'vh';
-      setVal(vh_w,'vh');
+      var vh_val = viewport_w;
+      var vh_w = vh_val + 'px'; // <!-- [WORKAROUND] for cross platform -->
+      $('#vh').css({'width':vh_w, 'height':H});
+      var vh_html = formatVal((PX_PER_VW/PX_PER_VH * 100)+'vh','vh').replace(' <b>vh</b>','');
+      $('#vh > .label').html(vh_html + ' <b>vh</b>');
 
-      var vmin_w = (viewport_w < viewport_h)? vw_val+'vmin': vh_val+'vmin';
-      setVal(vmin_w,'vmin');
+      var vmin_flag = (viewport_w < viewport_h)? 'vw': 'vh';
+      $('#vmin').css({'width':(vmin_flag == 'vw')? vw_w: vh_w, 'height':H});
+      $('#vmin > .label').html(formatVal((vmin_flag == 'vw'? vw_html+'vmin': vh_html)+'vmin','vmin'));
 
-      var vmax_w = (viewport_w >= viewport_h)? vw_val+'vmax': vh_val+'vmax';
-      setVal(vmax_w,'vmax');
+      var vmax_flag = (viewport_w >= viewport_h)? 'vw': 'vh';
+      $('#vmax').css({'width':(vmax_flag == 'vw')? vw_w: vh_w, 'height':H});
+      $('#vmax > .label').html(formatVal((vmax_flag == 'vw'? vw_html: vh_html)+'vmax','vmax'));
     });
   });
 })();
