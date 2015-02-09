@@ -103,8 +103,6 @@
       var viewport_h = getViewportHeight();
       var PX_PER_VW = viewport_w * 0.01;
       var PX_PER_VH = viewport_h * 0.01;
-      var PX_PER_VMIN = Math.min(viewport_w, viewport_h) * 0.01;
-      var PX_PER_VMAX = Math.max(viewport_w, viewport_h) * 0.01;
 
       console.log(PX_PER_VW);
 

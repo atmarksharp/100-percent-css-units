@@ -69,6 +69,7 @@
     <h2 id="unit-conversion">Unit Conversion</h2>
 
     <ul>
+      <!-- Lists -->
       <li><strong>px <i class="fa fa-arrows-h"></i> in</strong> &mdash;&mdash; 1px = 1/96 in
         (<a href="http://www.w3.org/TR/css3-values/#absolute-lengths">see the specification</a>)
       <li><strong>pt <i class="fa fa-arrows-h"></i> in</strong> &mdash;&mdash; 1pt = 1/72 in
@@ -79,10 +80,16 @@
          of a new element that <b>inherits font properties of the element</b> (see <a href="#code2">code2</a>)
       <li><strong>rem <i class="fa fa-arrows-h"></i> px</strong> &mdash;&mdash; get the
         <code>font-size</code> of the root element like &lt;html> (see <a href="#code3">code3</a>)
+      <li><strong>in <i class="fa fa-arrows-h"></i> px</strong> &mdash;&mdash;
+        1pc = 12pt, and 1pt = 1/72 in
+      <li><strong>pc <i class="fa fa-arrows-h"></i> px</strong> &mdash;&mdash;
+        1pc = 12pt, and 1pt = 1/72 in
+      <li><strong>vw, vh, vmin, vmax <i class="fa fa-arrows-h"></i> px</strong> &mdash;&mdash; get the
+        <code>viewport size</code>, and compare sizes when vmin or vmax (see <a href="#code4">code3</a>)
 
+      <!-- Codes -->
       <div class="code-label" id="code1">code 1: em <i class="fa fa-long-arrow-right"></i> px</div>
       <pre><code class="javascript">
-        // http://www.zghthy.com/2076510/codep1/how-to-get-the-displayable-character-size-of-the-input-field
         function getFontSizeAsPixels($dom){
           return Number($dom.css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
         }
@@ -122,6 +129,56 @@
         return Number($('body').parent().css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
       }
       </code></pre>
+
+      <div class="code-label" id="code4">code 4: vw, vh, vmin, vmax <i class="fa fa-long-arrow-right"></i> px</div>
+      <pre><code class="javascript">
+      function getViewportWidth(){
+        var div = document.createElement("div");
+        div.style.width = '100vw'
+        var body = document.getElementsByTagName("body")[0];
+        body.appendChild(div);
+        var size = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
+        body.removeChild(div);
+        return parseFloat(size);
+      }
+
+      function getViewportHeight(){
+        var div = document.createElement("div");
+        div.style.height = '100vh'
+        var body = document.getElementsByTagName("body")[0];
+        body.appendChild(div);
+        var size = document.defaultView.getComputedStyle(div, null).getPropertyValue('height');
+        body.removeChild(div);
+        return parseFloat(size);
+      }
+
+      var viewport_w = getViewportWidth();
+      var viewport_h = getViewportHeight();
+      var PX_PER_VW = viewport_w * 0.01;
+      var PX_PER_VH = viewport_h * 0.01;
+
+      var vw_val = 100;
+      var vw_w = '100vw';
+      setVal(vw_w,'vw');
+
+      var vh_val = (PX_PER_VW / PX_PER_VH) * 100;
+      var vh_w = vh_val + 'vh';
+      setVal(vh_w,'vh');
+
+      var vmin_w = (viewport_w < viewport_h)? vw_val+'vmin': vh_val+'vmin';
+      setVal(vmin_w,'vmin');
+
+      var vmax_w = (viewport_w >= viewport_h)? vw_val+'vmax': vh_val+'vmax';
+      setVal(vmax_w,'vmax');
+    </code></pre>
+
+    <h2 id="license">License</h2>
+    <p>Copyright (c) 2015 Fumiya Funatsu</p>
+    <p>
+      This contents are free to use, share, copy and modify without any conditions, however the contents are NOT "the public domain." <br>
+      It is strictly inhibited that to make direct links to the contents of the publisher's site or applying loads.
+    </p>
+    <p>If possible, please include or link this license to your credit.</p>
 
     <p><a href="#home" class="go-to-the-top"><i class="fa fa-arrow-circle-up fa-2x"></i></a></p>
   </div>
