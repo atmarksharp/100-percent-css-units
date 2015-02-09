@@ -4,15 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <title>100% CSS Units</title>
+
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
   <script src="./100-percent.js"></script>
+  <script src="./script.js"></script>
+
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
 </head>
-<body>
+<body id="home">
   <div id="title-box">
-    <h1 id="title">100% CSS Units</h1>
-    <p id="desc">Create the "100%" with numeric units of css </p>
+    <div class="margin" style="height: 1em; width: 100%;"></div>
+    <h1 id="title"><a href="./" style="color:black;">100% CSS Units</a></h1>
+    <p id="desc">Create the 100% width with <a class="go-to-info link" href="#">the numeric units of CSS</a> <a href="#home" class="go-to-info"><i class="fa fa-arrow-down"></i></a> </p>
   </div>
   <div id="contents">
     <div id="percent" class="box"><div class="label">100%</div></div>
@@ -30,6 +38,95 @@
     <div id="vh" class="box"><div class="label"></div></div>
     <div id="vmin" class="box"><div class="label"></div></div>
     <div id="vmax" class="box"><div class="label"></div></div>
+  </div>
+  <div id="help" class="sentence">
+    <p><a href="#home" class="go-to-the-top"><i class="fa fa-arrow-circle-up fa-2x"></i></a></p>
+    <h2 id="what-is-this">What Is This?</h2>
+    <p>This list shows that each numeric units of CSS can be converted to other units with javascript.</p>
+    <h2 id="css-numeric-units">CSS Numeric Units</h2>
+    <p>For detail, see
+      <a href="http://www.w3.org/TR/css3-values/#numeric-types">CSS Values and Units Module Level 3</a>
+    </p>
+    <ul>
+      <li><strong>%</strong> (percent) &mdash;&mdash; percentage
+      </li>
+      <li><strong>px</strong> (pixels) &mdash;&mdash; pixels. <code>1px</code> is equal to 1/96 inchs.</li>
+      <li><strong>pt</strong> (points) &mdash;&mdash; points. <code>1pt</code> is equal to 1/72 inchs.</li>
+      <li><strong>em</strong> &mdash;&mdash; font size of the element</li>
+      <li><strong>ex</strong> &mdash;&mdash; small "x"-height of the element's font </li>
+      <li><strong>rem</strong> &mdash;&mdash; font size of the root element </li>
+      <li><strong>pc</strong> (picas) &mdash;&mdash; <code>1pc</code> is equal to 12pt. </li>
+      <li><strong>in</strong> (inches) &mdash;&mdash; inches.<code>1in</code> is equal to 2.54cm
+      <li><strong>mm</strong> (millimeters) &mdash;&mdash; millimeters
+      <li><strong>cm</strong> (centimeters) &mdash;&mdash; centimeters
+      <li><strong>ch</strong> &mdash;&mdash; width of the "0" (ZERO, U+0030) glyph in the element's font
+      <li><strong>vw</strong> &mdash;&mdash; 1% of viewport width
+      <li><strong>vh</strong> &mdash;&mdash; 1% of viewport height
+      <li><strong>vmin</strong> &mdash;&mdash; 1% of viewport length <i>with minimum-length</i>
+      <li><strong>vmax</strong> &mdash;&mdash; 1% of viewport length <i>with maximum-length</i>
+    </ul>
+
+    <h2 id="unit-conversion">Unit Conversion</h2>
+
+    <ul>
+      <li><strong>px <i class="fa fa-arrows-h"></i> in</strong> &mdash;&mdash; 1px = 1/96 in
+        (<a href="http://www.w3.org/TR/css3-values/#absolute-lengths">see the specification</a>)
+      <li><strong>pt <i class="fa fa-arrows-h"></i> in</strong> &mdash;&mdash; 1pt = 1/72 in
+        (<a href="http://www.w3.org/TR/css3-values/#absolute-lengths">see the specification</a>)
+      <li><strong>em <i class="fa fa-arrows-h"></i> px</strong> &mdash;&mdash; get the
+        <code>font-size</code> of the element (see <a href="#code1">code1</a>)
+      <li><strong>ex, ch <i class="fa fa-arrows-h"></i> px</strong> &mdash;&mdash; create and get the size
+         of a new element that <b>inherits font properties of the element</b> (see <a href="#code2">code2</a>)
+      <li><strong>rem <i class="fa fa-arrows-h"></i> px</strong> &mdash;&mdash; get the
+        <code>font-size</code> of the root element like &lt;html> (see <a href="#code3">code3</a>)
+
+      <div class="code-label" id="code1">code 1: em <i class="fa fa-long-arrow-right"></i> px</div>
+      <pre><code class="javascript">
+        // http://www.zghthy.com/2076510/codep1/how-to-get-the-displayable-character-size-of-the-input-field
+        function getFontSizeAsPixels($dom){
+          return Number($dom.css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
+        }
+      </code></pre>
+
+      <div class="code-label" id="code2">code 2: ex, ch <i class="fa fa-long-arrow-right"></i> px</div>
+      <pre><code class="javascript">
+        function getPixelsPerUnit($dom,unit){
+          var div = document.createElement("div");
+          var st = div.style;
+          st.fontSize=$dom.css('font-size');
+          st.fontFamily=$dom.css('font-family');
+          st.fontWeight=$dom.css('font-weight');
+          st.fontVariant=$dom.css('font-variant');
+          st.fontStyle=$dom.css('font-style');
+          st.lineHeight=$dom.css('line-height');
+          st.width='100'+unit
+          var body = document.getElementsByTagName("body")[0];
+          body.appendChild(div);
+          var ppx= document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
+          body.removeChild(div);
+          return parseFloat(ppx) / 100;
+        }
+
+        function getPixelsPerEx($dom){
+          return getPixelsPerUnit($dom,'ex');
+        }
+
+        function getPixelsPerCh($dom){
+          return getPixelsPerUnit($dom,'ch');
+        }
+      </code></pre>
+
+      <div class="code-label" id="code3">code 3: rem <i class="fa fa-long-arrow-right"></i> px</div>
+      <pre><code class="javascript">
+      function getRemAsPixels(){
+        return Number($('body').parent().css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
+      }
+      </code></pre>
+
+    <p><a href="#home" class="go-to-the-top"><i class="fa fa-arrow-circle-up fa-2x"></i></a></p>
+  </div>
+  <div id="footer" class="sentence">
+
   </div>
 </body>
 </html>

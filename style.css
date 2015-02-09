@@ -3,7 +3,43 @@ body {
   background: white;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+}
+
+.sentence {
+  margin-left: 2em;
+  margin-bottom: 2em;
+}
+
+a {
+  /* color: #757575; */
+  color: #543430;
+  text-decoration: none;
+  border-bottom: 1.8px dashed #757575;
+}
+
+a.link {
+  border-bottom: 1.8px dashed #757575 !important;
+}
+
+a:hover {
+  text-decoration: none;
+  border-bottom: 0 !important;
+}
+
+
+a.go-to-the-top {
+  color: #757575;
+  border: 0;
+}
+
+a.go-to-info {
+  color: #757575;
+  border: 0;
+}
+
+#title a {
+  border: 0;
 }
 
 #title-box {
@@ -23,7 +59,7 @@ body {
 }
 
 #contents {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .box {
@@ -37,6 +73,14 @@ body {
   text-align: center;
   vertical-align: middle;
   font-size: 1.5em;
+}
+
+.code-label {
+  padding: 0;
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 #percent {

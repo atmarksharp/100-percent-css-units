@@ -60,7 +60,7 @@
   }
 
   function getFontSizeAsPixels($dom){
-    return Number($dom.parent().css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
+    return Number($dom.css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
   }
 
   function getViewportWidth(){
@@ -88,7 +88,8 @@
     var INCH_PER_PT = 1.0/72.0;
     var CM_PER_INCH = 2.54;
     var PT_PER_PC = 12.0;
-    var PX_PER_INCH = getPPI();
+    // var PX_PER_INCH = getPPI();
+    var PX_PER_INCH = 96;
 
     $(window).on('load resize',function(){
       // Variablese
