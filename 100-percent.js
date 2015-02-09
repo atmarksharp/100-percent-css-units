@@ -155,14 +155,14 @@
       var vh_val = viewport_w;
       var vh_w = vh_val + 'px'; // <!-- [WORKAROUND] for cross platform -->
       $('#vh').css({'width':vh_w, 'height':H});
-      var vh_html = formatVal((PX_PER_VW/PX_PER_VH * 100)+'vh','vh').replace(' <b>vh</b>','');
+      var vh_html = formatVal($(window).width()/$(window).height()*100+'vh','vh').replace(' <b>vh</b>','');
       $('#vh > .label').html(vh_html + ' <b>vh</b>');
 
-      var vmin_flag = (viewport_w < viewport_h)? 'vw': 'vh';
+      var vmin_flag = ($(window).width() < $(window).height())? 'vw': 'vh';
       $('#vmin').css({'width':(vmin_flag == 'vw')? vw_w: vh_w, 'height':H});
       $('#vmin > .label').html(formatVal((vmin_flag == 'vw'? vw_html: vh_html)+'vmin','vmin'));
 
-      var vmax_flag = (viewport_w >= viewport_h)? 'vw': 'vh';
+      var vmax_flag = ($(window).width() >= $(window).height())? 'vw': 'vh';
       $('#vmax').css({'width':(vmax_flag == 'vw')? vw_w: vh_w, 'height':H});
       $('#vmax > .label').html(formatVal((vmax_flag == 'vw'? vw_html: vh_html)+'vmax','vmax'));
 
