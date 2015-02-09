@@ -1,5 +1,5 @@
 body {
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100% !important;
   background: white;
   padding: 0;
   margin: 0;
@@ -23,7 +23,7 @@ body {
 }
 
 #contents {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 .box {
@@ -56,15 +56,33 @@ body {
 #ex {
   background: #ffeeb5;
 }
-#pc {
+#rem {
   background: #fbfcb0;
 }
-#in {
+#pc {
   background: #ecffb5;
 }
-#mm {
+#in {
   background: #deffb5;
 }
-#cm {
+#mm {
   background: #c1ffb5;
+}
+#cm {
+  background: #b5ffc8;
+}
+#ch {
+  background: #b5ffe5;
+}
+#vw {
+  background: #b5ffff;
+}
+#vh {
+  background: #b5eaff;
+}
+#vmin {
+  background: #b5d5ff;
+}
+#vmax {
+  background: #b5bcff;
 }
