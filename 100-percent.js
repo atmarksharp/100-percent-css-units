@@ -158,7 +158,7 @@
 
       var vmin_flag = (viewport_w < viewport_h)? 'vw': 'vh';
       $('#vmin').css({'width':(vmin_flag == 'vw')? vw_w: vh_w, 'height':H});
-      $('#vmin > .label').html(formatVal((vmin_flag == 'vw'? vw_html+'vmin': vh_html)+'vmin','vmin'));
+      $('#vmin > .label').html(formatVal((vmin_flag == 'vw'? vw_html: vh_html)+'vmin','vmin'));
 
       var vmax_flag = (viewport_w >= viewport_h)? 'vw': 'vh';
       $('#vmax').css({'width':(vmax_flag == 'vw')? vw_w: vh_w, 'height':H});
