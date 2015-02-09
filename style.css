@@ -1,14 +1,15 @@
 body {
   -webkit-text-size-adjust: 100% !important;
-  background: white;
+  background: url(./img/cream_pixels.png) repeat;
   padding: 0;
   margin: 0;
   /* overflow-x: hidden; */
 }
 
 .sentence {
-  margin-left: 2em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 a {
@@ -50,6 +51,11 @@ a.go-to-info {
   padding: 0;
 }
 
+#desc, #title {
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
 #title-box > h1 {
   margin-bottom: 0.2em;
 }
@@ -61,6 +67,30 @@ a.go-to-info {
 #contents {
   margin-bottom: 1em;
 }
+
+#footer {
+  display: table;
+  text-align: center;
+  background: black;
+  width: 100%;
+  height: 100px;
+}
+
+#footer-contents {
+  display: table-cell;
+  background: url(./img/dark_embroidery.png) repeat;
+  vertical-align: middle;
+  color: #cccccc;
+  margin: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+#footer-contents a {
+  color: #cccccc !important;
+}
+
+
 
 .box {
   display: table;
