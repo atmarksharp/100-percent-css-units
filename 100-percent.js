@@ -92,6 +92,8 @@
     var PX_PER_INCH = 96;
 
     $(window).on('load resize',function(){
+      $('.spin').show();
+
       // Variablese
       var PX_PER_EM = getFontSizeAsPixels($('#em'));
       var PX_PER_EX = getPixelsPerEx($('#ex'));
@@ -163,6 +165,8 @@
       var vmax_flag = (viewport_w >= viewport_h)? 'vw': 'vh';
       $('#vmax').css({'width':(vmax_flag == 'vw')? vw_w: vh_w, 'height':H});
       $('#vmax > .label').html(formatVal((vmax_flag == 'vw'? vw_html: vh_html)+'vmax','vmax'));
+
+      $('.spin').hide();
     });
   });
 })();
