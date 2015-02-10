@@ -20,7 +20,8 @@
   <script src="//j.wovn.io/0" data-wovnio="key=eQp26"></script> <!-- Translation with wovn.io -->
 
   <link rel="shortcut icon" HREF="favicon.ico">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./style.css">
 
@@ -101,90 +102,90 @@
           1inch = 2.54cm, 1cm = 10mm and and 1in = 96px.
       <li><strong>vw, vh, vmin, vmax <i class="fa fa-arrows-h"></i> px</strong> &mdash;&mdash; get the
         <code>viewport size</code>, and compare sizes when vmin or vmax (see <a href="#code4">code4</a>)
+    </ul>
+    <!-- Codes -->
+    <div class="code-label" id="code1">code 1: em <i class="fa fa-long-arrow-right"></i> px</div>
+    <pre><code class="javascript">
+    function getFontSizeAsPixels($dom){
+      return Number($dom.css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
+    }
+    </code></pre>
 
-      <!-- Codes -->
-      <div class="code-label" id="code1">code 1: em <i class="fa fa-long-arrow-right"></i> px</div>
-      <pre><code class="javascript">
-        function getFontSizeAsPixels($dom){
-          return Number($dom.css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
-        }
-      </code></pre>
+    <div class="code-label" id="code2">code 2: ex, ch <i class="fa fa-long-arrow-right"></i> px</div>
+    <pre><code class="javascript">
+    function getPixelsPerUnit($dom,unit){
+      var div = document.createElement("div");
+      var st = div.style;
+      st.fontSize=$dom.css('font-size');
+      st.fontFamily=$dom.css('font-family');
+      st.fontWeight=$dom.css('font-weight');
+      st.fontVariant=$dom.css('font-variant');
+      st.fontStyle=$dom.css('font-style');
+      st.lineHeight=$dom.css('line-height');
+      st.width='100'+unit
+      var body = document.getElementsByTagName("body")[0];
+      body.appendChild(div);
+      var ppx= document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
+      body.removeChild(div);
+      return parseFloat(ppx) / 100;
+    }
 
-      <div class="code-label" id="code2">code 2: ex, ch <i class="fa fa-long-arrow-right"></i> px</div>
-      <pre><code class="javascript">
-        function getPixelsPerUnit($dom,unit){
-          var div = document.createElement("div");
-          var st = div.style;
-          st.fontSize=$dom.css('font-size');
-          st.fontFamily=$dom.css('font-family');
-          st.fontWeight=$dom.css('font-weight');
-          st.fontVariant=$dom.css('font-variant');
-          st.fontStyle=$dom.css('font-style');
-          st.lineHeight=$dom.css('line-height');
-          st.width='100'+unit
-          var body = document.getElementsByTagName("body")[0];
-          body.appendChild(div);
-          var ppx= document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
-          body.removeChild(div);
-          return parseFloat(ppx) / 100;
-        }
+    function getPixelsPerEx($dom){
+      return getPixelsPerUnit($dom,'ex');
+    }
 
-        function getPixelsPerEx($dom){
-          return getPixelsPerUnit($dom,'ex');
-        }
+    function getPixelsPerCh($dom){
+      return getPixelsPerUnit($dom,'ch');
+    }
+    </code></pre>
 
-        function getPixelsPerCh($dom){
-          return getPixelsPerUnit($dom,'ch');
-        }
-      </code></pre>
+    <div class="code-label" id="code3">code 3: rem <i class="fa fa-long-arrow-right"></i> px</div>
+    <pre><code class="javascript">
+    function getRemAsPixels(){
+      return Number($('body').parent().css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
+    }
+    </code></pre>
 
-      <div class="code-label" id="code3">code 3: rem <i class="fa fa-long-arrow-right"></i> px</div>
-      <pre><code class="javascript">
-      function getRemAsPixels(){
-        return Number($('body').parent().css('font-size').match(/(\d*(\.\d*)?)px/)[1]);
-      }
-      </code></pre>
+    <div class="code-label" id="code4">code 4: vw, vh, vmin, vmax <i class="fa fa-long-arrow-right"></i> px</div>
+    <pre><code class="javascript">
+    function getViewportWidth(){
+      var div = document.createElement("div");
+      div.style.width = '100vw'
+      var body = document.getElementsByTagName("body")[0];
+      body.appendChild(div);
+      var size = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
+      body.removeChild(div);
+      return parseFloat(size);
+    }
 
-      <div class="code-label" id="code4">code 4: vw, vh, vmin, vmax <i class="fa fa-long-arrow-right"></i> px</div>
-      <pre><code class="javascript">
-      function getViewportWidth(){
-        var div = document.createElement("div");
-        div.style.width = '100vw'
-        var body = document.getElementsByTagName("body")[0];
-        body.appendChild(div);
-        var size = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
-        body.removeChild(div);
-        return parseFloat(size);
-      }
+    function getViewportHeight(){
+      var div = document.createElement("div");
+      div.style.height = '100vh'
+      var body = document.getElementsByTagName("body")[0];
+      body.appendChild(div);
+      var size = document.defaultView.getComputedStyle(div, null).getPropertyValue('height');
+      body.removeChild(div);
+      return parseFloat(size);
+    }
 
-      function getViewportHeight(){
-        var div = document.createElement("div");
-        div.style.height = '100vh'
-        var body = document.getElementsByTagName("body")[0];
-        body.appendChild(div);
-        var size = document.defaultView.getComputedStyle(div, null).getPropertyValue('height');
-        body.removeChild(div);
-        return parseFloat(size);
-      }
+    var viewport_w = getViewportWidth();
+    var viewport_h = getViewportHeight();
+    var PX_PER_VW = viewport_w * 0.01;
+    var PX_PER_VH = viewport_h * 0.01;
 
-      var viewport_w = getViewportWidth();
-      var viewport_h = getViewportHeight();
-      var PX_PER_VW = viewport_w * 0.01;
-      var PX_PER_VH = viewport_h * 0.01;
+    var vw_val = 100;
+    var vw_w = '100vw';
+    setVal(vw_w,'vw');
 
-      var vw_val = 100;
-      var vw_w = '100vw';
-      setVal(vw_w,'vw');
+    var vh_val = (PX_PER_VW / PX_PER_VH) * 100;
+    var vh_w = vh_val + 'vh';
+    setVal(vh_w,'vh');
 
-      var vh_val = (PX_PER_VW / PX_PER_VH) * 100;
-      var vh_w = vh_val + 'vh';
-      setVal(vh_w,'vh');
+    var vmin_w = (viewport_w < viewport_h)? vw_val+'vmin': vh_val+'vmin';
+    setVal(vmin_w,'vmin');
 
-      var vmin_w = (viewport_w < viewport_h)? vw_val+'vmin': vh_val+'vmin';
-      setVal(vmin_w,'vmin');
-
-      var vmax_w = (viewport_w >= viewport_h)? vw_val+'vmax': vh_val+'vmax';
-      setVal(vmax_w,'vmax');
+    var vmax_w = (viewport_w >= viewport_h)? vw_val+'vmax': vh_val+'vmax';
+    setVal(vmax_w,'vmax');
     </code></pre>
 
     <h2 id="todo">TODO</h2>
