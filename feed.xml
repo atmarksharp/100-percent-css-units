@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>100% CSS Units</title>
+  <link href="http://atmarksharp.com/s/100-percent-css-units/"/>
+  <updated>2015-2-10T11:00:29Z</updated>
+  <author>
+    <name>atmarksharp</name>
+  </author>
+  <id>urn:uuid:6A992D55-29F4-59A4-4FEE-58C733255E98</id>
+
+  <entry>
+    <title>100% CSS Units</title>
+    <link href="http://atmarksharp.com/s/100-percent-css-units/index.html"/>
+        <content type="image/png" src="http://atmarksharp.com/s/100-percent-css-units/main-image.png"/>
+    <updated>2015-2-10T11:00:29Z</updated>
+    <published>2015-2-10T11:00:29Z</published>
+    <summary><![CDATA[[Compatible with English and Japanese] CSS units on this website are all 100% width. It shows that each numeric units of CSS can be converted to other units with javascript.]]></summary>
+    <id>urn:uuid:5D5FE56B-5E8E-B567-D1C8-4B073178A9B8</id>
+  </entry>
+</feed>
