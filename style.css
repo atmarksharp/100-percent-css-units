@@ -6,6 +6,15 @@ body {
   /* overflow-x: hidden; */
 }
 
+.ads {
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 .spin {
   width: 100%;
   height: 30px;
